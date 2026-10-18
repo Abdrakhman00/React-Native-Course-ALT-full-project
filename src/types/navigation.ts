@@ -1,4 +1,4 @@
-import type { NavigatorScreenParams } from '@react-navigation/native';
+import type { NavigatorScreenParams } from "@react-navigation/native";
 
 export type MainTabParamList = {
   Home: undefined;
@@ -17,7 +17,12 @@ export type RootStackParamList = {
   CitySelect: undefined;
   MainTabs: NavigatorScreenParams<MainTabParamList> | undefined;
   CourseDetails: { courseId: string; title: string; teacher: string };
-  AssignmentDetails: { assignmentId: string; title: string; subject: string; deadline: string };
+  AssignmentDetails: {
+    assignmentId: string;
+    title: string;
+    subject: string;
+    deadline: string;
+  };
   Assignments: undefined;
   Grades: undefined;
 };

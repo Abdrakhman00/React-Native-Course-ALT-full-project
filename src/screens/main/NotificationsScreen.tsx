@@ -1,4 +1,60 @@
-import React from 'react'; import { StyleSheet, Text, View } from 'react-native'; import { Ionicons } from '@expo/vector-icons'; import Screen from '../../components/Screen'; import Header from '../../components/Header'; import { colors, common } from '../../theme';
-const items = [{ icon: 'calendar' as const, title: 'Изменение расписания', text: 'Пара по Python перенесена в аудиторию 210.', time: '10 минут назад' }, { icon: 'school' as const, title: 'Новая оценка', text: 'По предмету «Базы данных» выставлено 91 балл.', time: 'Вчера' }, { icon: 'megaphone' as const, title: 'Объявление', text: 'В пятницу состоится студенческая конференция.', time: '16 октября' }];
-export default function NotificationsScreen() { return <Screen><Header title="Уведомления" subtitle="Последние новости университета" />{items.map(item => <View key={item.title} style={[common.card, styles.row]}><View style={styles.icon}><Ionicons name={item.icon} size={23} color={colors.purple} /></View><View style={{ flex: 1 }}><Text style={styles.title}>{item.title}</Text><Text style={styles.text}>{item.text}</Text><Text style={styles.time}>{item.time}</Text></View></View>)}</Screen>; }
-const styles = StyleSheet.create({ row: { flexDirection: 'row' }, icon: { width: 45, height: 45, borderRadius: 14, backgroundColor: '#F4E5FC', alignItems: 'center', justifyContent: 'center', marginRight: 13 }, title: { color: colors.dark, fontSize: 16, fontWeight: '700' }, text: { color: colors.gray, lineHeight: 20, marginTop: 5 }, time: { color: colors.purple, fontSize: 12, marginTop: 8 } });
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import Screen from "../../components/Screen";
+import Header from "../../components/Header";
+import { colors, common } from "../../theme";
+const items = [
+  {
+    icon: "calendar" as const,
+    title: "Изменение расписания",
+    text: "Пара по Python перенесена в аудиторию 210.",
+    time: "10 минут назад",
+  },
+  {
+    icon: "school" as const,
+    title: "Новая оценка",
+    text: "По предмету «Базы данных» выставлено 91 балл.",
+    time: "Вчера",
+  },
+  {
+    icon: "megaphone" as const,
+    title: "Объявление",
+    text: "В пятницу состоится студенческая конференция.",
+    time: "16 октября",
+  },
+];
+export default function NotificationsScreen() {
+  return (
+    <Screen>
+      <Header title="Уведомления" subtitle="Последние новости университета" />
+      {items.map((item) => (
+        <View key={item.title} style={[common.card, styles.row]}>
+          <View style={styles.icon}>
+            <Ionicons name={item.icon} size={23} color={colors.purple} />
+          </View>
+          <View style={{ flex: 1 }}>
+            <Text style={styles.title}>{item.title}</Text>
+            <Text style={styles.text}>{item.text}</Text>
+            <Text style={styles.time}>{item.time}</Text>
+          </View>
+        </View>
+      ))}
+    </Screen>
+  );
+}
+const styles = StyleSheet.create({
+  row: { flexDirection: "row" },
+  icon: {
+    width: 45,
+    height: 45,
+    borderRadius: 14,
+    backgroundColor: "#F4E5FC",
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: 13,
+  },
+  title: { color: colors.dark, fontSize: 16, fontWeight: "700" },
+  text: { color: colors.gray, lineHeight: 20, marginTop: 5 },
+  time: { color: colors.purple, fontSize: 12, marginTop: 8 },
+});

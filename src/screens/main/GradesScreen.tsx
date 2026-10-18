@@ -1,4 +1,72 @@
-import React from 'react'; import { StyleSheet, Text, View } from 'react-native'; import Screen from '../../components/Screen'; import BackButton from '../../components/BackButton'; import { colors, common } from '../../theme';
-const grades = [{ subject: 'Мобильная разработка', points: 88, letter: 'B+' }, { subject: 'Базы данных', points: 91, letter: 'A-' }, { subject: 'Python', points: 85, letter: 'B+' }, { subject: 'Компьютерные сети', points: 79, letter: 'B-' }];
-export default function GradesScreen() { const average = Math.round(grades.reduce((sum, grade) => sum + grade.points, 0) / grades.length); return <Screen><BackButton /><Text style={common.title}>Оценки</Text><Text style={common.subtitle}>Текущая успеваемость</Text><View style={styles.average}><Text style={styles.averageLabel}>Средний балл</Text><Text style={styles.averageValue}>{average}</Text><Text style={styles.averageHint}>из 100 баллов</Text></View><Text style={common.sectionTitle}>По предметам</Text>{grades.map(item => <View key={item.subject} style={[common.card, styles.row]}><View style={{ flex: 1 }}><Text style={styles.subject}>{item.subject}</Text><View style={styles.track}><View style={[styles.fill, { width: `${item.points}%` }]} /></View></View><View style={styles.grade}><Text style={styles.points}>{item.points}</Text><Text style={styles.letter}>{item.letter}</Text></View></View>)}</Screen>; }
-const styles = StyleSheet.create({ average: { backgroundColor: colors.purple, borderRadius: 22, padding: 22, alignItems: 'center' }, averageLabel: { color: '#EFCBFF' }, averageValue: { color: '#fff', fontSize: 42, fontWeight: '700', marginVertical: 4 }, averageHint: { color: '#fff' }, row: { flexDirection: 'row', alignItems: 'center' }, subject: { color: colors.dark, fontSize: 16, fontWeight: '700' }, track: { height: 6, borderRadius: 5, backgroundColor: colors.field, marginTop: 12, overflow: 'hidden' }, fill: { height: '100%', backgroundColor: colors.purple }, grade: { alignItems: 'center', marginLeft: 15 }, points: { color: colors.dark, fontSize: 20, fontWeight: '700' }, letter: { color: colors.purple, marginTop: 3, fontWeight: '700' } });
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import Screen from "../../components/Screen";
+import BackButton from "../../components/BackButton";
+import { colors, common } from "../../theme";
+const grades = [
+  { subject: "Мобильная разработка", points: 88, letter: "B+" },
+  { subject: "Базы данных", points: 91, letter: "A-" },
+  { subject: "Python", points: 85, letter: "B+" },
+  { subject: "Компьютерные сети", points: 79, letter: "B-" },
+];
+export default function GradesScreen() {
+  const average = Math.round(
+    grades.reduce((sum, grade) => sum + grade.points, 0) / grades.length,
+  );
+  return (
+    <Screen>
+      <BackButton />
+      <Text style={common.title}>Оценки</Text>
+      <Text style={common.subtitle}>Текущая успеваемость</Text>
+      <View style={styles.average}>
+        <Text style={styles.averageLabel}>Средний балл</Text>
+        <Text style={styles.averageValue}>{average}</Text>
+        <Text style={styles.averageHint}>из 100 баллов</Text>
+      </View>
+      <Text style={common.sectionTitle}>По предметам</Text>
+      {grades.map((item) => (
+        <View key={item.subject} style={[common.card, styles.row]}>
+          <View style={{ flex: 1 }}>
+            <Text style={styles.subject}>{item.subject}</Text>
+            <View style={styles.track}>
+              <View style={[styles.fill, { width: `${item.points}%` }]} />
+            </View>
+          </View>
+          <View style={styles.grade}>
+            <Text style={styles.points}>{item.points}</Text>
+            <Text style={styles.letter}>{item.letter}</Text>
+          </View>
+        </View>
+      ))}
+    </Screen>
+  );
+}
+const styles = StyleSheet.create({
+  average: {
+    backgroundColor: colors.purple,
+    borderRadius: 22,
+    padding: 22,
+    alignItems: "center",
+  },
+  averageLabel: { color: "#EFCBFF" },
+  averageValue: {
+    color: "#fff",
+    fontSize: 42,
+    fontWeight: "700",
+    marginVertical: 4,
+  },
+  averageHint: { color: "#fff" },
+  row: { flexDirection: "row", alignItems: "center" },
+  subject: { color: colors.dark, fontSize: 16, fontWeight: "700" },
+  track: {
+    height: 6,
+    borderRadius: 5,
+    backgroundColor: colors.field,
+    marginTop: 12,
+    overflow: "hidden",
+  },
+  fill: { height: "100%", backgroundColor: colors.purple },
+  grade: { alignItems: "center", marginLeft: 15 },
+  points: { color: colors.dark, fontSize: 20, fontWeight: "700" },
+  letter: { color: colors.purple, marginTop: 3, fontWeight: "700" },
+});
