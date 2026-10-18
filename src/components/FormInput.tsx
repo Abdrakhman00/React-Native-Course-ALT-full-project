@@ -1,0 +1,5 @@
+import React, { useState } from 'react'; import { Pressable, StyleSheet, TextInput, View, type TextInputProps } from 'react-native'; import { Ionicons } from '@expo/vector-icons'; import { colors } from '../theme';
+type IconName = React.ComponentProps<typeof Ionicons>['name'];
+type Props = TextInputProps & { icon: IconName; password?: boolean };
+export default function FormInput({ icon, password = false, ...props }: Props) { const [visible, setVisible] = useState(false); return <View style={styles.box}><Ionicons name={icon} size={22} color={colors.gray} style={styles.icon} /><TextInput {...props} style={styles.input} placeholderTextColor={colors.gray} secureTextEntry={password && !visible} />{password && <Pressable onPress={() => setVisible(v => !v)} hitSlop={10}><Ionicons name={visible ? 'eye' : 'eye-off'} size={22} color={colors.gray} /></Pressable>}</View>; }
+const styles = StyleSheet.create({ box: { height: 58, flexDirection: 'row', alignItems: 'center', backgroundColor: colors.field, borderRadius: 15, paddingHorizontal: 16, marginBottom: 20 }, icon: { marginRight: 13 }, input: { flex: 1, height: '100%', color: colors.dark, fontSize: 17 } });
